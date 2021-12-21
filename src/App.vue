@@ -1,18 +1,17 @@
 <template>
   <div id="app">
     <h2>Streaming market data</h2>
+    <IsinInput />
     <div class="container">
       <table>
         <thead>
           <tr>
-            <th>#</th>
             <th>ISIN</th>
             <th>Price</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="stock in stocks" :key="stock.isin">
-            <th scope="row">1</th>
             <td>{{ stock.isin }}</td>
             <td>{{ stock.price }}</td>
           </tr>
@@ -25,13 +24,23 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
+// Helpers
 import { websocketService } from "@/api/websocket.service";
 import { Stock } from "@/lib/types/Stock";
+
+// Store
 import store from "@/store";
 import { GET_STOCKS } from "@/store/modules/stocks";
 
+// Components
+import IsinInput from "@/components/IsinInput.vue";
+
 export default defineComponent({
   name: "App",
+  components: {
+    IsinInput,
+  },
   created() {
     websocketService.init("ws://159.89.15.214:8080/");
   },
@@ -42,6 +51,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style lang="scss">
 #app {
   font-family: DINNextLTPro, sans-serif;
@@ -71,7 +81,7 @@ body {
 
 td,
 th {
-  padding: 15px;
+  padding: 10px;
   color: black;
 }
 
@@ -81,18 +91,5 @@ th {
 
 thead {
   background-color: #36df77;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
