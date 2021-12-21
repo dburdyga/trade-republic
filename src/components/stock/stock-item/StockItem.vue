@@ -7,7 +7,9 @@
       <p>{{ formattedPrice }}</p>
     </div>
     <div class="stock-item">
-
+      <button>
+        <SvgIcon name="delete" />
+      </button>
     </div>
   </div>
 </template>
@@ -25,10 +27,10 @@ export default defineComponent({
     },
   },
   computed: {
-    formattedPrice (): string {
+    formattedPrice(): string {
       return convertNumberToCurrency(this.stock.price);
-    }
-  }
+    },
+  },
 });
 </script>
 

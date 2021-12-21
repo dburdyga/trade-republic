@@ -4,7 +4,7 @@ export function convertNumberToCurrency(
     locales: "de-DE",
     currency: "EUR",
   }
-) {
+): string {
   return new Intl.NumberFormat(config.locales, {
     style: "currency",
     currency: config.currency,

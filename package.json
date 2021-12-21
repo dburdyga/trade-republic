@@ -1,6 +1,5 @@
 {
   "name": "trade-republic",
-  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -36,7 +35,11 @@
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "svgo": "^1.1.0",
+    "svgo-loader": "^3.0.0",
     "typescript": "~4.1.5",
+    "vue-cli-plugin-svg-sprite": "~1.1.0",
     "vue-jest": "^5.0.0-0"
-  }
+  },
+  "license": "MIT"
 }
