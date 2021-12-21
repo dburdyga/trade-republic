@@ -7,7 +7,7 @@
       <p>{{ formattedPrice }}</p>
     </div>
     <div class="stock-item">
-      
+
     </div>
   </div>
 </template>
