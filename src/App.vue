@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <div v-for="stock in stocks" :key="stock.isin">
-      <h2>{{ stock.isin }}</h2>
-      <p>{{stock.price}}</p>
-    </div>
+    <h2>Streaming market data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ISIN</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="stock in stocks" :key="stock.isin">
+          <th scope="row">1</th>
+          <td>{{ stock.isin }}</td>
+          <td>{{ stock.price }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <router-view />
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import { websocketService } from "@/api/websocket.service";
@@ -17,15 +31,14 @@ import { GET_STOCKS } from "@/store/modules/stocks";
 export default defineComponent({
   name: "Home",
   created() {
-    websocketService.init('ws://159.89.15.214:8080/');
+    websocketService.init("ws://159.89.15.214:8080/");
   },
   computed: {
     stocks(): Stock[] {
       return store.getters[GET_STOCKS];
-    }
-  }
+    },
+  },
 });
-
 </script>
 <style lang="scss">
 #app {
@@ -36,6 +49,10 @@ export default defineComponent({
   line-height: 1.5;
   letter-spacing: unset;
   font-weight: 500;
+}
+td,
+th {
+  border: 1px solid grey;
 }
 
 #nav {

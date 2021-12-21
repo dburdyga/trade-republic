@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    234
-  </div>
+<!--  <div class="home">Streaming market data</div>-->
 </template>
 
 <script lang="ts">
