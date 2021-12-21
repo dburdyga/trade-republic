@@ -1,5 +1,5 @@
 <template>
-  <!--  <div class="home">Streaming market data</div>-->
+  <div class="home">Streaming market data</div>
 </template>
 
 <script lang="ts">

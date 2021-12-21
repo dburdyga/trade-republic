@@ -1,0 +1,21 @@
+
+@font-face {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-medium;
+  src: url($font_path + 'DINNextLTPro-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-medium;
+  src: url($font_path + 'DINNextLTPro-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-bold;
+  src: url($font_path + 'DINNextLTPro-Bold.woff2') format('woff2');
+}

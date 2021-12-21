@@ -15,7 +15,6 @@ export const websocketService = {
       console.log(websocket.readyState);
       console.log(e);
       websocket.send(JSON.stringify({ subscribe: "BMG9156K1018" }));
-      // websocket.send(JSON.stringify({ unsubscribe: "BMG9156K1018" }));
     };
 
     websocket.onclose = (event) => {

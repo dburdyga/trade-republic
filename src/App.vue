@@ -17,6 +17,8 @@
           </tr>
         </tbody>
       </table>
+      <h1>Make your money
+        work for you</h1>
     </div>
   </div>
   <router-view />
@@ -53,43 +55,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-#app {
-  font-family: DINNextLTPro, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  line-height: 1.5;
-  letter-spacing: unset;
-  font-weight: 500;
-}
-html,
-body {
-  height: 100%;
-}
 
-body {
-  margin: 0;
-  font-family: DINNextLTPro, sans-serif;
-  font-weight: 100;
-}
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-td,
-th {
-  padding: 10px;
-  color: black;
-}
-
-th {
-  text-align: left;
-}
-
-thead {
-  background-color: #36df77;
-}
 </style>
