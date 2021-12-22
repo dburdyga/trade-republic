@@ -42,7 +42,10 @@ export default {
 <style>
 .svg-icon {
   fill: currentColor;
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
+}
+.svg-icon:hover {
+  fill: grey;
 }
 </style>

@@ -1,16 +1,16 @@
 module.exports = {
   pluginOptions: {
     svgSprite: {
-      dir: 'src/assets/icons',
+      dir: "src/assets/icons",
       test: /\.(svg)(\?.*)?$/,
       loaderOptions: {
         extract: true,
         spriteFilename: "img/icons.svg",
       },
       pluginOptions: {
-        plainSprite: true
-      }
-    }
+        plainSprite: true,
+      },
+    },
   },
   lintOnSave: false,
 

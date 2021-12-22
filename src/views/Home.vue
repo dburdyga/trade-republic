@@ -1,5 +1,5 @@
 <template>
-  <div class="home">Streaming market data</div>
+  <h2>Streaming market data</h2>
   <StockList />
 </template>
 

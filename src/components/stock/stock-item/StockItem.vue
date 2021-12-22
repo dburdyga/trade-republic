@@ -7,7 +7,7 @@
       <p>{{ formattedPrice }}</p>
     </div>
     <div class="stock-item">
-      <button>
+      <button class="stock-button">
         <SvgIcon name="delete" />
       </button>
     </div>
@@ -34,4 +34,18 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.stock {
+  display: flex;
+  align-items: center;
+
+  &-item {
+    margin-right: 20px;
+  }
+  &-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+</style>

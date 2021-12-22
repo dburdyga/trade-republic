@@ -1,7 +1,5 @@
 <template>
-  <div id="app">
-    <h2>Streaming market data</h2>
-  </div>
+  <div id="app"></div>
   <router-view />
 </template>
 
@@ -10,7 +8,6 @@ import { defineComponent } from "vue";
 
 // Helpers
 import { websocketService } from "@/api/websocket.service";
-
 
 export default defineComponent({
   name: "App",
