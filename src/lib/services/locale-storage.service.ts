@@ -29,3 +29,5 @@ function setItemAsync<T>(key: string, object: T): Promise<void> {
     }
   });
 }
+
+export { getItem, getItemAsync, setItem, setItemAsync };

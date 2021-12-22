@@ -19,6 +19,7 @@ export default defineComponent({
   methods: {
     subscribeStock() {
       store.dispatch(SUBSCRIBE_STOCK, this.isin);
+      this.isin = "";
     },
   },
 });

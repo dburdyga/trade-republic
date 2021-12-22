@@ -1,0 +1,4 @@
+export const GET_MESSAGE = "ui/GET_MESSAGE";
+export const SET_SUCCESS_MESSAGE = "ui/SET_SUCCESS_MESSAGE";
+export const SET_ERROR_MESSAGE = "ui/SET_ERROR_MESSAGE";
+export const CLEAR_MESSAGE = "ui/CLEAR_MESSAGE";

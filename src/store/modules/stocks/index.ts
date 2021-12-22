@@ -1,19 +1,26 @@
 import { Module } from "vuex";
 import { Stock } from "@/lib/types/models/Stock";
-import { Message } from "@/lib/types/api/Message";
 import { sendMessage } from "@/api/websocket.service";
-import { GET_STOCKS, SET_STOCKS, SUBSCRIBE_STOCK, UNSUBSCRIBE_STOCK } from "@/store/modules/stocks/constants";
+import * as localeStorageService from "@/lib/services/locale-storage.service";
+import {
+  GET_STOCKS,
+  REMOVE_STOCK,
+  SET_STOCKS,
+  SUBSCRIBE_STOCK,
+  UNSUBSCRIBE_STOCK,
+} from "@/store/modules/stocks/constants";
+import { LOCALE_STORAGE_KEY } from "@/lib/services/constants";
+import { RootState } from "@/store/RootState";
+import { SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
 
 export interface StockModule {
   stocks: Stock[];
 }
 
-
-
-const stocks: Module<StockModule, StockModule> = {
+const stocks: Module<StockModule, RootState> = {
   state: (): StockModule => {
     return {
-      stocks: [],
+      stocks: localeStorageService.getItem(LOCALE_STORAGE_KEY) || [],
     };
   },
   actions: {
@@ -22,6 +29,8 @@ const stocks: Module<StockModule, StockModule> = {
     },
     [UNSUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ unsubscribe: isin });
+      commit(REMOVE_STOCK, isin);
+      commit(SET_SUCCESS_MESSAGE, "Stock was removed");
     },
   },
   getters: {
@@ -38,7 +47,25 @@ const stocks: Module<StockModule, StockModule> = {
         stocks.push(payload);
       }
 
+      localeStorageService.setItemAsync<Stock[]>(LOCALE_STORAGE_KEY, stocks);
       state.stocks = stocks;
+    },
+    [REMOVE_STOCK](state, isin: string) {
+      const index = state.stocks.findIndex((stock) => stock.isin === isin);
+      if (index > -1) {
+        state.stocks.splice(index, 1);
+      }
+
+      const cachedStocks =
+        localeStorageService.getItem<Stock[]>(LOCALE_STORAGE_KEY);
+      const cachedStocksIndex = cachedStocks.findIndex(
+        (stock) => stock.isin === isin
+      );
+
+      if (cachedStocksIndex > -1) {
+        cachedStocks.splice(cachedStocksIndex, 1);
+        localeStorageService.setItemAsync(LOCALE_STORAGE_KEY, cachedStocks);
+      }
     },
   },
 };

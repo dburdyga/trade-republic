@@ -1,6 +1,10 @@
 import store from "@/store";
 import { Message } from "@/lib/types/api/Message";
 import { SET_STOCKS } from "@/store/modules/stocks/constants";
+import * as localeStorageService from "@/lib/services/locale-storage.service";
+import { LOCALE_STORAGE_KEY } from "@/lib/services/constants";
+import { Stock } from "@/lib/types/models/Stock";
+import { SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
 
 let MAX_CONNECT_RETRY = 3;
 const ABNORMAL_REASON_CODE = "1006";
@@ -10,11 +14,15 @@ let COUNTER_MESSAGES = MESSAGE_INTERVAL;
 
 let websocket: WebSocket | undefined = undefined;
 
-function init (url: string): void {
+function init(url: string): void {
   websocket = new WebSocket(url);
 
-  websocket.onopen = (e) => {
-    // sendMessage({ subscribe: "BMG9156K1018" });
+  websocket.onopen = () => {
+    const savedStocks =
+      localeStorageService.getItem<Stock[]>(LOCALE_STORAGE_KEY) || [];
+    savedStocks.forEach(({ isin }) => {
+      sendMessage({ subscribe: isin });
+    });
   };
 
   websocket.onclose = (event) => {
@@ -42,15 +50,18 @@ function init (url: string): void {
 
     COUNTER_MESSAGES--;
   };
-};
+}
 
 function sendMessage(message: Message): void {
   if (websocket && websocket.readyState === WebSocket.OPEN) {
     websocket.send(JSON.stringify(message));
     COUNTER_MESSAGES = MESSAGE_INTERVAL;
+
+    store.commit(
+      SET_SUCCESS_MESSAGE,
+      "Message was added. Stock can appear in couple of seconds"
+    );
   }
 }
 
-
-
-export { init, sendMessage }
+export { init, sendMessage };
