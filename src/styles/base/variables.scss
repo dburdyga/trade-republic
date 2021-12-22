@@ -1,11 +1,25 @@
+@use "sass:math";
+
+
 //colors
 $green: #36df77;
 $light-grey: #d3d3d3;
 $grey: #bbbaba;
 
-// typography
+// building units 8px based
+$building-unit: 8px;
+$building-unit_0_5: math.div($building-unit, 2);
+$building-unit_x1_5: $building-unit * 1.5;
+$building-unit_x2: $building-unit * 2;
+$building-unit_x3: $building-unit * 3;
 
-$font-family: DINNextLTPro;
+// typography
+$font-family: Questrial;
+$font-size-caption: 12px;
+$font-size-regular: 14px;
+$font-size-h3: 16px;
+$font-size-h2: 18px;
+$font-size-h1: 24px;
 
 $font-regular: 400;
 $font-medium: 600;

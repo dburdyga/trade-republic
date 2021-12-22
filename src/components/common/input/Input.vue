@@ -1,7 +1,12 @@
 <template>
   <div class="input-component">
     <label v-if="label" :for="id">{{ label }}</label>
-    <input :id="id" :placeholder="placeholder" />
+    <input
+      :id="id"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
   </div>
 </template>
 
@@ -29,6 +34,20 @@ export default defineComponent({
       type: Boolean,
       required: false,
       default: true,
+    },
+    modelValue: {
+      type: String,
+      required: false,
+      default: "",
+    },
+  },
+  model: {
+    prop: "value",
+    event: "input",
+  },
+  methods: {
+    updateValue(value) {
+      this.$emit("input", value);
     },
   },
 });

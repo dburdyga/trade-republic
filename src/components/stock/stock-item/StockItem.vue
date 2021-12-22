@@ -10,48 +10,18 @@
         <p class="stock-item-value">{{ formattedPrice }}</p>
       </div>
     </div>
-    <button class="stock-button">
+    <Button @click="unsubscribeStock">
       <SvgIcon name="delete" />
-    </button>
-  </div>
-
-<!-- Remove-->
-  <div class="stock">
-    <div class="stock-container">
-      <div class="stock-item">
-        <p class="stock-item-title">ISIN</p>
-        <p class="stock-item-value">{{ stock.isin }}</p>
-      </div>
-      <div class="stock-item">
-        <p class="stock-item-title">Price</p>
-        <p class="stock-item-value">{{ formattedPrice }}</p>
-      </div>
-    </div>
-    <button class="stock-button">
-      <SvgIcon name="delete" />
-    </button>
-  </div>
-  <div class="stock">
-    <div class="stock-container">
-      <div class="stock-item">
-        <p class="stock-item-title">ISIN</p>
-        <p class="stock-item-value">{{ stock.isin }}</p>
-      </div>
-      <div class="stock-item">
-        <p class="stock-item-title">Price</p>
-        <p class="stock-item-value">{{ formattedPrice }}</p>
-      </div>
-    </div>
-    <button class="stock-button">
-      <SvgIcon name="delete" />
-    </button>
+    </Button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Stock } from "@/lib/types/Stock";
+import { Stock } from "@/lib/types/models/Stock";
 import { convertNumberToCurrency } from "@/lib/formatters/number.formatter";
+import store from "@/store";
+import { UNSUBSCRIBE_STOCK } from "@/store/modules/stocks/constants";
 
 export default defineComponent({
   props: {
@@ -65,6 +35,11 @@ export default defineComponent({
       return convertNumberToCurrency(this.stock.price);
     },
   },
+  methods: {
+    unsubscribeStock() {
+      store.dispatch(UNSUBSCRIBE_STOCK, this.stock.isin);
+    }
+  }
 });
 </script>
 
@@ -83,9 +58,6 @@ export default defineComponent({
   }
 
   &-item {
-    &:first-child {
-      margin-right: 60px;
-    }
     &-value {
       font-size: 18px;
       font-weight: $font-medium;

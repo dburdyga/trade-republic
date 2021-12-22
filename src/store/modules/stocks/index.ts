@@ -1,18 +1,28 @@
 import { Module } from "vuex";
-import { Stock } from "@/lib/types/Stock";
+import { Stock } from "@/lib/types/models/Stock";
+import { Message } from "@/lib/types/api/Message";
+import { sendMessage } from "@/api/websocket.service";
+import { GET_STOCKS, SET_STOCKS, SUBSCRIBE_STOCK, UNSUBSCRIBE_STOCK } from "@/store/modules/stocks/constants";
 
 export interface StockModule {
   stocks: Stock[];
 }
 
-export const GET_STOCKS = "stocks/GET_STOCKS";
-export const SET_STOCKS = "stocks/SET_STOCKS";
+
 
 const stocks: Module<StockModule, StockModule> = {
   state: (): StockModule => {
     return {
       stocks: [],
     };
+  },
+  actions: {
+    [SUBSCRIBE_STOCK]({ commit }, isin: string) {
+      sendMessage({ subscribe: isin });
+    },
+    [UNSUBSCRIBE_STOCK]({ commit }, isin: string) {
+      sendMessage({ unsubscribe: isin });
+    },
   },
   getters: {
     [GET_STOCKS]: (state: StockModule) => state.stocks,
