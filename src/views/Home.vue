@@ -2,6 +2,9 @@
   <div>
     <h1>Streaming market data</h1>
     <div class="home-content">
+      <div class="home-section">
+        <Select />
+      </div>
       <div class="home-section is-big">
         <StockList />
       </div>
