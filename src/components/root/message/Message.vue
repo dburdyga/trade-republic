@@ -20,6 +20,7 @@ import { Message } from "@/lib/types/ui/Message";
 import Button from "@/components/common/button/Button.vue";
 import SvgIcon from "@/components/common/svg-icon/SvgIcon.vue";
 
+let timerId: number;
 export default defineComponent({
   components: { SvgIcon, Button },
   computed: {
@@ -34,6 +35,18 @@ export default defineComponent({
     clearMessage() {
       store.commit(CLEAR_MESSAGE);
     },
+  },
+  watch: {
+    hasMessage(newValue) {
+      if (newValue) {
+        timerId = setTimeout(() => this.clearMessage(), 5000);
+      }
+    },
+  },
+  unmounted() {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
   },
 });
 </script>
@@ -58,7 +71,8 @@ export default defineComponent({
   &-content {
     display: flex;
     align-items: center;
-    margin-left: $building-unit_x4;
+    justify-content: space-between;
+    margin: 0 $building-unit_x4;
   }
 
   &.error {

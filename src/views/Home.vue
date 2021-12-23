@@ -27,17 +27,11 @@ export default defineComponent({
   &-content {
     display: flex;
     margin-top: $building-unit_x4;
-
-    @media screen and (max-width: 600px) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: $building-unit;
-    }
   }
 
   &-section {
     flex: 1;
+    padding: 0 $building-unit-x2;
 
     &.is-big {
       flex: 2;

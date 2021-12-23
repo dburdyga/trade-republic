@@ -3,35 +3,56 @@
     <label class="is-secondary-color is-caption label" v-if="label">
       {{ label }}
     </label>
-    <select class="control" v-model="selected">
-      <option v-for="isin in isins" :value="isin" :key="isin.id">
-        {{ isin }}
+    <select :id="id" class="control" v-model="value">
+      <option value="" v-if="placeholder">{{placeholder}}</option>
+      <option v-for="item in items" :value="item.value" :key="item.value">
+        {{ item.label }}
       </option>
     </select>
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+import { SelectItem } from "@/lib/types/ui/SelectItem";
 
 export default defineComponent({
-  data() {
-    return {
-      selected: "BMG9156K1018",
-      isins: ["BMG9156K1018", "DE000BASF111", "BMG9156K1010"],
-      // isins: [
-      //   { label: "BMG9156K1018", key: "1" },
-      //   { label: "DE000BASF111", key: "2" },
-      // ],
-    };
-  },
   props: {
     label: {
       type: String,
       required: false,
       default: "",
     },
+    items: {
+      type: Array as PropType<SelectItem[]>,
+      required: true,
+    },
+    id: {
+      type: String,
+      required: true,
+      default: "select-id",
+    },
+    placeholder: {
+      type: String,
+      required: false,
+      default: "Select item",
+    },
+    modelValue: {
+      type: String,
+      required: false,
+      default: "",
+    },
   },
+  computed: {
+    value: {
+      get() {
+        return this.modelValue;
+      },
+      set(newValue: string) {
+        this.$emit("update:modelValue", newValue);
+      }
+    }
+  }
 });
 </script>
 

@@ -1,7 +1,6 @@
 import { Module } from "vuex";
 import { Stock } from "@/lib/types/models/Stock";
 import { sendMessage } from "@/api/websocket.service";
-import * as localeStorageService from "@/lib/services/locale-storage.service";
 import {
   GET_STOCKS,
   REMOVE_STOCK,
@@ -9,9 +8,8 @@ import {
   SUBSCRIBE_STOCK,
   UNSUBSCRIBE_STOCK,
 } from "@/store/modules/stocks/constants";
-import { LOCALE_STORAGE_KEY } from "@/lib/services/constants";
 import { RootState } from "@/store/RootState";
-import { SET_ERROR_MESSAGE } from "@/store/modules/ui/constants";
+import { SET_ERROR_MESSAGE, SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
 
 export interface StockModule {
   stocks: Stock[];
@@ -20,17 +18,18 @@ export interface StockModule {
 const stocks: Module<StockModule, RootState> = {
   state: (): StockModule => {
     return {
-      stocks: localeStorageService.getItem(LOCALE_STORAGE_KEY) || [],
+      stocks: [],
     };
   },
   actions: {
     [SUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ subscribe: isin });
+      commit(SET_STOCKS, { isin, price: 0 });
     },
     [UNSUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ unsubscribe: isin });
       commit(REMOVE_STOCK, isin);
-      commit(SET_ERROR_MESSAGE, "Stock was removed");
+      commit(SET_SUCCESS_MESSAGE, "Stock was removed");
     },
   },
   getters: {
@@ -47,21 +46,9 @@ const stocks: Module<StockModule, RootState> = {
         stocks.push(payload);
       }
 
-      localeStorageService.setItemAsync<Stock[]>(LOCALE_STORAGE_KEY, stocks);
       state.stocks = stocks;
     },
     [REMOVE_STOCK](state, isin: string) {
-      const cachedStocks =
-        localeStorageService.getItem<Stock[]>(LOCALE_STORAGE_KEY);
-      const cachedStocksIndex = cachedStocks.findIndex(
-        (stock) => stock.isin === isin
-      );
-
-      if (cachedStocksIndex > -1) {
-        cachedStocks.splice(cachedStocksIndex, 1);
-        localeStorageService.setItemAsync(LOCALE_STORAGE_KEY, cachedStocks);
-      }
-
       const index = state.stocks.findIndex((stock) => stock.isin === isin);
       if (index > -1) {
         state.stocks.splice(index, 1);

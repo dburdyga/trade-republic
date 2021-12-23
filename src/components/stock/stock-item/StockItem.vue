@@ -9,10 +9,20 @@
         <p class="stock-item-title">Price</p>
         <p class="stock-item-value">{{ formattedPrice }}</p>
       </div>
+      <div class="stock-item">
+        <p class="stock-item-title">bid</p>
+        <p class="stock-item-value is-secondary-color">{{ formattedBid }}</p>
+      </div>
+      <div class="stock-item">
+        <p class="stock-item-title">ask</p>
+        <p class="stock-item-value is-secondary-color">{{ formattedAsk }}</p>
+      </div>
+      <div>
+        <Button class="stock-button" @click="unsubscribeStock">
+          <SvgIcon name="delete" />
+        </Button>
+      </div>
     </div>
-    <Button class="stock-button" @click="unsubscribeStock">
-      <SvgIcon name="delete" />
-    </Button>
   </div>
 </template>
 
@@ -34,6 +44,12 @@ export default defineComponent({
     formattedPrice(): string {
       return convertNumberToCurrency(this.stock.price);
     },
+    formattedAsk(): string {
+      return convertNumberToCurrency(this.stock.ask);
+    },
+    formattedBid(): string {
+      return convertNumberToCurrency(this.stock.bid);
+    },
   },
   methods: {
     unsubscribeStock() {
@@ -47,18 +63,23 @@ export default defineComponent({
 .stock {
   display: flex;
   align-items: center;
-  margin-top: $building-unit_x2;
+
+  &:not(:last-child) {
+    margin-bottom: $building-unit;
+  }
+
 
   &-container {
     display: flex;
     align-items: center;
-    width: 250px;
     border: 1px solid $pale-light;
     border-radius: $border-radius;
     padding: $building-unit $building-unit_x1_5;
+    width: 100%;
   }
 
   &-item {
+    flex: 1;
     &-value {
       font-size: $font-size-h2;
       font-weight: $font-medium;
