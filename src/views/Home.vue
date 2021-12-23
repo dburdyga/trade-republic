@@ -2,9 +2,6 @@
   <div>
     <h1>Streaming market data</h1>
     <div class="home-content">
-      <div class="home-section">
-        <Select />
-      </div>
       <div class="home-section is-big">
         <StockList />
       </div>
@@ -30,6 +27,13 @@ export default defineComponent({
   &-content {
     display: flex;
     margin-top: $building-unit_x4;
+
+    @media screen and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: $building-unit;
+    }
   }
 
   &-section {

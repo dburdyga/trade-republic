@@ -1,5 +1,6 @@
 <template>
   <form class="stock-add">
+    <Select label="List of predefined ISINs" />
     <div class="stock-add-input">
       <Input
         id="isin"
@@ -85,6 +86,11 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   width: 60%;
+  
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin-top: $building-unit_x2;
+  }
 
   &-button {
     max-width: 200px;
