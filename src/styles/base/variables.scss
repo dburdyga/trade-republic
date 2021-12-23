@@ -1,6 +1,5 @@
 @use "sass:math";
 
-
 //colors
 $green: #36df77;
 $red: #e22635;
@@ -9,10 +8,12 @@ $grey: #bbbaba;
 
 // building units 8px based
 $building-unit: 8px;
-$building-unit_0_5: math.div($building-unit, 2);
-$building-unit_x1_5: $building-unit * 1.5;
-$building-unit_x2: $building-unit * 2;
-$building-unit_x3: $building-unit * 3;
+$building-unit_0_5: math.div($building-unit, 2); // 4
+$building-unit_x1_5: $building-unit * 1.5; // 12
+$building-unit_x2: $building-unit * 2; // 16
+$building-unit_x2_5: $building-unit * 2.5; // 20
+$building-unit_x3: $building-unit * 3; // 24
+$building-unit_x4: $building-unit * 4; // 32
 
 // typography
 $font-family: Questrial;
@@ -27,4 +28,3 @@ $font-medium: 600;
 $font-bold: 700;
 
 $font_path: '/assets/';
-

@@ -3,9 +3,7 @@
     <template v-if="stocks.length">
       <StockItem :key="stock.isin" v-for="stock in stocks" :stock="stock" />
     </template>
-    <template v-else>
-      Stock list is empty. Please add stock.
-    </template>
+    <template v-else> Stock list is empty. Please add stock. </template>
   </div>
 </template>
 

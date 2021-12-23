@@ -10,7 +10,7 @@
         <p class="stock-item-value">{{ formattedPrice }}</p>
       </div>
     </div>
-    <Button @click="unsubscribeStock">
+    <Button class="stock-button" @click="unsubscribeStock">
       <SvgIcon name="delete" />
     </Button>
   </div>
@@ -38,8 +38,8 @@ export default defineComponent({
   methods: {
     unsubscribeStock() {
       store.dispatch(UNSUBSCRIBE_STOCK, this.stock.isin);
-    }
-  }
+    },
+  },
 });
 </script>
 
@@ -47,29 +47,30 @@ export default defineComponent({
 .stock {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-top: $building-unit_x2;
 
   &-container {
     display: flex;
     align-items: center;
+    width: 250px;
     border: 1px solid $light-grey;
     border-radius: 15px;
-    padding: 8px 12px 8px 12px;
+    padding: $building-unit $building-unit_x1_5;
   }
 
   &-item {
     &-value {
-      font-size: 18px;
+      font-size: $font-size-h2;
       font-weight: $font-medium;
     }
     &-title {
-      font-size: 12px;
+      font-size: $font-size-caption;
       color: $grey;
     }
   }
 
   &-button {
-    margin-left: 20px;
+    margin-left: $building-unit_x2_5;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -77,6 +78,6 @@ export default defineComponent({
 }
 
 p {
-  margin: 5px;
+  margin: $building-unit_0_5;
 }
 </style>

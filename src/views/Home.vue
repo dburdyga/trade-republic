@@ -1,10 +1,10 @@
 <template>
   <h2>Streaming market data</h2>
   <div>
-    <StockList />
+    <StockAdd />
   </div>
   <div>
-    <StockAdd />
+    <StockList />
   </div>
 </template>
 

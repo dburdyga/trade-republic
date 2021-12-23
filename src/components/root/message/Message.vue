@@ -6,7 +6,7 @@
   >
     <div class="message-content">
       <p>{{ message.text }}</p>
-      <Button @click="clearMessage">
+      <Button class="button-close" @click="clearMessage">
         <SvgIcon name="close" />
       </Button>
     </div>
@@ -33,8 +33,8 @@ export default defineComponent({
   methods: {
     clearMessage() {
       store.commit(CLEAR_MESSAGE);
-    }
-  }
+    },
+  },
 });
 </script>
 
@@ -46,10 +46,12 @@ export default defineComponent({
   position: absolute;
   z-index: 2;
   width: 100%;
+  font-size: $font-size-regular;
 
   &-content {
     display: flex;
     align-items: center;
+    margin-left: $building-unit_x4;
   }
 
   &.error {
@@ -59,5 +61,12 @@ export default defineComponent({
   &.success {
     background-color: $green;
   }
+}
+
+.button-close {
+  margin-left: $building-unit_x2;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 </style>

@@ -11,7 +11,7 @@ import {
 } from "@/store/modules/stocks/constants";
 import { LOCALE_STORAGE_KEY } from "@/lib/services/constants";
 import { RootState } from "@/store/RootState";
-import { SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
+import { SET_ERROR_MESSAGE } from "@/store/modules/ui/constants";
 
 export interface StockModule {
   stocks: Stock[];
@@ -30,7 +30,7 @@ const stocks: Module<StockModule, RootState> = {
     [UNSUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ unsubscribe: isin });
       commit(REMOVE_STOCK, isin);
-      commit(SET_SUCCESS_MESSAGE, "Stock was removed");
+      commit(SET_ERROR_MESSAGE, "Stock was removed");
     },
   },
   getters: {

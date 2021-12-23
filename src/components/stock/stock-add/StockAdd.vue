@@ -1,6 +1,11 @@
 <template>
   <form class="stock-add">
-    <Input id="isin" label="ISIN" placeholder="Add ISIN" v-model:modelValue="isin" />
+    <Input
+      id="isin"
+      label="ISIN"
+      placeholder="Add ISIN"
+      v-model:modelValue="isin"
+    />
     <Button @click="subscribeStock">Subscribe</Button>
   </form>
 </template>
