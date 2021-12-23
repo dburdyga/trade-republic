@@ -51,11 +51,6 @@ const stocks: Module<StockModule, RootState> = {
       state.stocks = stocks;
     },
     [REMOVE_STOCK](state, isin: string) {
-      const index = state.stocks.findIndex((stock) => stock.isin === isin);
-      if (index > -1) {
-        state.stocks.splice(index, 1);
-      }
-
       const cachedStocks =
         localeStorageService.getItem<Stock[]>(LOCALE_STORAGE_KEY);
       const cachedStocksIndex = cachedStocks.findIndex(
@@ -65,6 +60,11 @@ const stocks: Module<StockModule, RootState> = {
       if (cachedStocksIndex > -1) {
         cachedStocks.splice(cachedStocksIndex, 1);
         localeStorageService.setItemAsync(LOCALE_STORAGE_KEY, cachedStocks);
+      }
+
+      const index = state.stocks.findIndex((stock) => stock.isin === isin);
+      if (index > -1) {
+        state.stocks.splice(index, 1);
       }
     },
   },

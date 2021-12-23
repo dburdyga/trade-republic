@@ -1,10 +1,13 @@
 @use "sass:math";
 
 //colors
-$green: #36df77;
+$black: #121212;
+$green: #1fcc9e;
+$green-light: #65daaf;
 $red: #e22635;
-$light-grey: #d3d3d3;
-$grey: #bbbaba;
+$pale: #97a2b6;
+$pale-light: #bdc4d0;
+$white: #ffffff;
 
 // building units 8px based
 $building-unit: 8px;
@@ -15,13 +18,16 @@ $building-unit_x2_5: $building-unit * 2.5; // 20
 $building-unit_x3: $building-unit * 3; // 24
 $building-unit_x4: $building-unit * 4; // 32
 
+$border-radius: $building-unit_0_5;
+$default-transition: 0.4s all;
+
 // typography
 $font-family: Questrial;
 $font-size-caption: 12px;
 $font-size-regular: 14px;
 $font-size-h3: 16px;
 $font-size-h2: 18px;
-$font-size-h1: 24px;
+$font-size-h1: 36px;
 
 $font-regular: 400;
 $font-medium: 600;

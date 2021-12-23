@@ -1,10 +1,14 @@
 <template>
-  <h2>Streaming market data</h2>
   <div>
-    <StockAdd />
-  </div>
-  <div>
-    <StockList />
+    <h1>Streaming market data</h1>
+    <div class="home-content">
+      <div class="home-section is-big">
+        <StockList />
+      </div>
+      <div class="home-section">
+        <StockAdd />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,3 +22,19 @@ export default defineComponent({
   components: { StockAdd, StockList },
 });
 </script>
+<style lang="scss">
+.home {
+  &-content {
+    display: flex;
+    margin-top: $building-unit_x4;
+  }
+
+  &-section {
+    flex: 1;
+
+    &.is-big {
+      flex: 2;
+    }
+  }
+}
+</style>

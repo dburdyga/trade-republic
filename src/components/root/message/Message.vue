@@ -1,8 +1,7 @@
 <template>
   <div
-    v-if="message.text"
     class="message"
-    :class="{ [message.type]: true, 'is-visible': hasMessage }"
+    :class="{ [message.type]: true, 'is-hidden': !hasMessage }"
   >
     <div class="message-content">
       <p>{{ message.text }}</p>
@@ -27,7 +26,7 @@ export default defineComponent({
       return store.getters[GET_MESSAGE];
     },
     hasMessage(): boolean {
-      return this.message.text !== "";
+      return Boolean(this.message.text);
     },
   },
   methods: {
@@ -40,6 +39,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .message {
+  background-color: $pale-light;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   top: 0;
   left: 0;
   right: 0;
@@ -47,6 +48,11 @@ export default defineComponent({
   z-index: 2;
   width: 100%;
   font-size: $font-size-regular;
+  transition: $default-transition;
+
+  &.is-hidden {
+    transform: translateY(-300px);
+  }
 
   &-content {
     display: flex;

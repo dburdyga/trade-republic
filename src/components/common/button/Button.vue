@@ -1,5 +1,5 @@
 <template>
-  <button :id="id" :type="type">
+  <button class="button" :id="id" :type="type">
     <slot />
   </button>
 </template>
@@ -22,4 +22,33 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.button {
+  color: $black;
+  cursor: pointer;
+  font-size: $font-size-regular;
+  background-color: transparent;
+  border-radius: $border-radius;
+  box-shadow: none;
+  border: 1px solid $pale-light;
+  padding: $building-unit-x1_5 $building-unit;
+  transition: $default-transition;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.4;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.is-active {
+    background-color: $green;
+    color: $white;
+    border: none;
+
+    &:hover {
+      background-color: $green-light;
+    }
+  }
+}
+</style>

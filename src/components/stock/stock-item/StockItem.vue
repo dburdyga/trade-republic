@@ -53,7 +53,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     width: 250px;
-    border: 1px solid $light-grey;
+    border: 1px solid $pale;
     border-radius: 15px;
     padding: $building-unit $building-unit_x1_5;
   }
@@ -65,7 +65,7 @@ export default defineComponent({
     }
     &-title {
       font-size: $font-size-caption;
-      color: $grey;
+      color: $pale;
     }
   }
 

@@ -1,0 +1,34 @@
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+p {
+  font-size: $font-size-regular;
+}
+
+.is-bold {
+  font-weight: bold;
+}
+
+.is-caption {
+  font-size: $font-size-caption;
+}
+
+.is-secondary-color {
+  color: $pale-light;
+}

@@ -1,7 +1,15 @@
 <template>
   <div class="input-component">
-    <label v-if="label" :for="id">{{ label }}</label>
+    <label
+      class="is-secondary-color is-caption input-label"
+      :class="{ 'is-invalid': !isValid }"
+      v-if="label"
+      :for="id"
+      >{{ label }}</label
+    >
     <input
+      class="input-control"
+      :class="{ 'is-invalid': !isValid }"
       :id="id"
       :placeholder="placeholder"
       :value="modelValue"
@@ -33,7 +41,7 @@ export default defineComponent({
     isValid: {
       type: Boolean,
       required: false,
-      default: true,
+      default: false,
     },
     modelValue: {
       type: String,
@@ -45,16 +53,55 @@ export default defineComponent({
     prop: "value",
     event: "input",
   },
-  methods: {
-    updateValue(value) {
-      this.$emit("input", value);
-    },
-  },
 });
 </script>
 
 <style scoped lang="scss">
-.input-component {
-  display: flex;
+.input {
+  &-component {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-label {
+    margin-bottom: $building-unit_0_5;
+    padding-left: 2px;
+
+    &.is-invalid {
+      color: $red;
+    }
+  }
+
+  &-control {
+    border: 1px solid $pale-light;
+    border-radius: $border-radius;
+    font-size: $font-size-regular;
+    padding: $building-unit $building-unit_x2;
+    outline: none;
+    transition: $default-transition;
+
+    &.is-invalid {
+      border: 1px solid $red;
+      color: $red;
+
+      &::placeholder {
+        color: $red;
+      }
+
+      &:focus {
+        outline: 1px solid $red;
+        border: 1px solid $red;
+      }
+    }
+
+    &:focus {
+      outline: 1px solid $pale;
+      border: 1px solid $pale;
+    }
+
+    &::placeholder {
+      color: $pale;
+    }
+  }
 }
 </style>
