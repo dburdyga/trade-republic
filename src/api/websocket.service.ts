@@ -1,12 +1,12 @@
 import store from "@/store";
 import { Message } from "@/lib/types/api/Message";
 import { SET_STOCKS } from "@/store/modules/stocks/constants";
-import { SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
+import { SET_SUCCESS_MESSAGE, SET_UPDATE_INTERVAL } from "@/store/modules/ui/constants";
 
 let MAX_CONNECT_RETRY = 3;
 const ABNORMAL_REASON_CODE = "1006";
 
-const MESSAGE_INTERVAL = 50;
+export const MESSAGE_INTERVAL = 50;
 let COUNTER_MESSAGES = MESSAGE_INTERVAL;
 
 let websocket: WebSocket | undefined = undefined;
@@ -30,6 +30,9 @@ function init(url: string): void {
   };
 
   websocket.onmessage = (e) => {
+    if(COUNTER_MESSAGES % 20 === 0) {
+      store.commit(SET_UPDATE_INTERVAL, COUNTER_MESSAGES);
+    }
     if (COUNTER_MESSAGES === 0 || COUNTER_MESSAGES === MESSAGE_INTERVAL) {
       let message = {};
       try {

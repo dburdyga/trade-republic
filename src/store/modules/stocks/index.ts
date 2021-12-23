@@ -24,7 +24,7 @@ const stocks: Module<StockModule, RootState> = {
   actions: {
     [SUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ subscribe: isin });
-      commit(SET_STOCKS, { isin, price: 0 });
+      commit(SET_STOCKS, { isin, price: 0, ask: 0, bid: 0 });
     },
     [UNSUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ unsubscribe: isin });

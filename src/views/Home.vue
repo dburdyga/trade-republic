@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1>Streaming market data</h1>
+    <h1 class="home-header">Streaming market data</h1>
     <div class="home-content">
       <div class="home-section is-big">
         <StockList />
       </div>
-      <div class="home-section">
+      <div class="home-section home-form">
         <StockAdd />
       </div>
     </div>
@@ -24,18 +24,29 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .home {
+  height: 100vh;
+
+  &-header {
+    padding: 0 $building-unit-x2;
+  }
+
   &-content {
     display: flex;
     margin-top: $building-unit_x4;
+    height: 100vh;
   }
 
   &-section {
     flex: 1;
-    padding: 0 $building-unit-x2;
+    padding: 0 $building-unit-x4;
 
     &.is-big {
       flex: 2;
     }
+  }
+
+  &-form {
+    border-left: 1px dashed $pale-light;
   }
 }
 </style>
