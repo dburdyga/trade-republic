@@ -1,0 +1,31 @@
+.control {
+  border: 1px solid $pale-light;
+  border-radius: $border-radius;
+  font-size: $font-size-regular;
+  padding: $building-unit $building-unit_x2;
+  outline: none;
+  transition: $default-transition;
+
+  &.is-invalid {
+    border: 1px solid $red;
+    color: $red;
+
+    &::placeholder {
+      color: $red;
+    }
+
+    &:focus {
+      outline: 1px solid $red;
+      border: 1px solid $red;
+    }
+  }
+
+  &:focus {
+    outline: 1px solid $pale;
+    border: 1px solid $pale;
+  }
+
+  &::placeholder {
+    color: $pale;
+  }
+}

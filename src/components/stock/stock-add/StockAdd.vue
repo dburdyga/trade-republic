@@ -54,7 +54,7 @@ export default defineComponent({
       if (this.isin.length === 0 && !this.isTouched) {
         return true;
       }
-      
+
       return (
         this.isin.length === MAX_ISIN_LENGTH && validISINRegexp.test(this.isin)
       );

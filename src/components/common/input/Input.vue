@@ -1,14 +1,14 @@
 <template>
   <div class="input-component">
     <label
-      class="is-secondary-color is-caption input-label"
+      class="is-secondary-color is-caption label"
       :class="{ 'is-invalid': !isValid }"
       v-if="label"
       :for="id"
       >{{ label }}</label
     >
     <input
-      class="input-control"
+      class="control"
       :class="{ 'is-invalid': !isValid }"
       :id="id"
       :placeholder="placeholder"
@@ -61,47 +61,6 @@ export default defineComponent({
   &-component {
     display: flex;
     flex-direction: column;
-  }
-
-  &-label {
-    margin-bottom: $building-unit_0_5;
-    padding-left: 2px;
-
-    &.is-invalid {
-      color: $red;
-    }
-  }
-
-  &-control {
-    border: 1px solid $pale-light;
-    border-radius: $border-radius;
-    font-size: $font-size-regular;
-    padding: $building-unit $building-unit_x2;
-    outline: none;
-    transition: $default-transition;
-
-    &.is-invalid {
-      border: 1px solid $red;
-      color: $red;
-
-      &::placeholder {
-        color: $red;
-      }
-
-      &:focus {
-        outline: 1px solid $red;
-        border: 1px solid $red;
-      }
-    }
-
-    &:focus {
-      outline: 1px solid $pale;
-      border: 1px solid $pale;
-    }
-
-    &::placeholder {
-      color: $pale;
-    }
   }
 }
 </style>

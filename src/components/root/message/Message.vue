@@ -19,6 +19,7 @@ import { CLEAR_MESSAGE, GET_MESSAGE } from "@/store/modules/ui/constants";
 import { Message } from "@/lib/types/ui/Message";
 import Button from "@/components/common/button/Button.vue";
 import SvgIcon from "@/components/common/svg-icon/SvgIcon.vue";
+
 export default defineComponent({
   components: { SvgIcon, Button },
   computed: {
@@ -70,7 +71,7 @@ export default defineComponent({
 }
 
 .button-close {
-  margin-left: $building-unit_x2;
+  margin-left: $building-unit;
   border: none;
   background: transparent;
   cursor: pointer;

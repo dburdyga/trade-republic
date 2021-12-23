@@ -53,8 +53,8 @@ export default defineComponent({
     display: flex;
     align-items: center;
     width: 250px;
-    border: 1px solid $pale;
-    border-radius: 15px;
+    border: 1px solid $pale-light;
+    border-radius: $border-radius;
     padding: $building-unit $building-unit_x1_5;
   }
 
@@ -70,7 +70,7 @@ export default defineComponent({
   }
 
   &-button {
-    margin-left: $building-unit_x2_5;
+    margin-left: $building-unit;
     border: none;
     background: transparent;
     cursor: pointer;

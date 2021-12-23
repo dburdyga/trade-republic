@@ -1,0 +1,8 @@
+.label {
+  margin-bottom: $building-unit_0_5;
+  padding-left: 2px;
+
+  &.is-invalid {
+    color: $red;
+  }
+}

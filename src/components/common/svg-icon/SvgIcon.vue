@@ -45,7 +45,4 @@ export default {
   height: 24px;
   width: 24px;
 }
-.svg-icon:hover {
-  fill: grey;
-}
 </style>
