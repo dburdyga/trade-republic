@@ -12,10 +12,16 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
+// Helpers
 import { Stock } from "@/lib/types/models/Stock";
-import store from "@/store";
+
+// Components
 import StockTimer from "@/components/stock/stock-timer/StockTimer.vue";
 import StockItem from "@/components/stock/stock-item/StockItem.vue";
+
+// Store
+import store from "@/store";
 import { GET_STOCKS } from "@/store/modules/stocks/constants";
 
 export default defineComponent({

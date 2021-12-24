@@ -14,9 +14,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
+// Helpers
+import { Message } from "@/lib/types/ui/Message";
+
+// Store
 import store from "@/store";
 import { CLEAR_MESSAGE, GET_MESSAGE } from "@/store/modules/ui/constants";
-import { Message } from "@/lib/types/ui/Message";
+
+// Components
 import Button from "@/components/common/button/Button.vue";
 import SvgIcon from "@/components/common/svg-icon/SvgIcon.vue";
 

@@ -10,6 +10,8 @@ import { defineComponent } from "vue";
 
 // Helpers
 import { init as initWebsocketConnection } from "@/api/websocket.service";
+
+// Components
 import Message from "@/components/root/message/Message.vue";
 
 export default defineComponent({
