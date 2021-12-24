@@ -14,6 +14,7 @@ const components: { [key: string]: Record<string, unknown> } = {
   Select,
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function registerGlobalComponents(app: App) {
   Object.keys(components).forEach((key) => app.component(key, components[key]));
 }

@@ -32,6 +32,7 @@ export default {
       return icon.url;
     },
 
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     className() {
       return "svg-icon svg-icon--" + this.name;
     },
