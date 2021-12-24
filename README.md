@@ -9,9 +9,9 @@ other financial instrument. The format is e.g. DE000BASF111.
 
 - User can enter an ISIN themselves or choose from a list of predefined ISINs.
 
-- If the websocket disconnects, then ... user get some message
+- User cannot add same ISIN multiple times, user will get an error.
 
-- If user adds an instrument multiple times to their list, then ...
+- If the websocket disconnects, then ... user get some message
 
 ## Project setup
 ```

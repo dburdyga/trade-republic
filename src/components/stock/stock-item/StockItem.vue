@@ -10,11 +10,11 @@
         <p class="stock-item-value">{{ formattedPrice }}</p>
       </div>
       <div class="stock-item">
-        <p class="stock-item-title">bid</p>
+        <p class="stock-item-title">Bid</p>
         <p class="stock-item-value is-secondary-color">{{ formattedBid }}</p>
       </div>
       <div class="stock-item">
-        <p class="stock-item-title">ask</p>
+        <p class="stock-item-title">Ask</p>
         <p class="stock-item-value is-secondary-color">{{ formattedAsk }}</p>
       </div>
       <div>
