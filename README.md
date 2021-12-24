@@ -13,7 +13,7 @@ other financial instrument. The format is e.g. DE000BASF111.
 
 INSTALLATION
 ------------
-## Project setup
+### Project setup
 ```
 yarn install
 ```
