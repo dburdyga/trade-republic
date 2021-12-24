@@ -65,7 +65,7 @@ export default defineComponent({
   align-items: center;
 
   &:not(:last-child) {
-    margin-bottom: $building-unit;
+    margin-bottom: $building-unit_x2;
   }
 
   &-container {
@@ -99,6 +99,10 @@ export default defineComponent({
     border: none;
     background: transparent;
     cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+      margin-left: 0;
+    }
   }
 }
 

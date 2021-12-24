@@ -27,12 +27,16 @@ export default defineComponent({
   height: 100vh;
 
   &-header {
-    padding: 0 $building-unit-x2;
+    padding: 0 $building-unit-x4;
+
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
   }
 
   &-content {
     display: flex;
-    margin-top: $building-unit_x4;
+    margin-top: $building-unit_x2;
     height: 100vh;
 
     @media screen and (max-width: 600px) {
@@ -44,6 +48,11 @@ export default defineComponent({
   &-section {
     flex: 1;
     padding: 0 $building-unit-x4;
+
+    @media screen and (max-width: 600px) {
+      flex: 0;
+      padding: 0;
+    }
 
     &.is-big {
       flex: 2;

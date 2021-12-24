@@ -33,5 +33,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .stock-list {
+  @media screen and (max-width: 600px) {
+    margin-top: $building-unit_x2;
+  }
 }
 </style>
