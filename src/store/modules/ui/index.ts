@@ -2,9 +2,11 @@ import { Module } from "vuex";
 import { Message, MessageType } from "@/lib/types/ui/Message";
 import {
   CLEAR_MESSAGE,
-  GET_MESSAGE, GET_UPDATE_INTERVAL,
+  GET_MESSAGE,
+  GET_UPDATE_INTERVAL,
   SET_ERROR_MESSAGE,
-  SET_SUCCESS_MESSAGE, SET_UPDATE_INTERVAL
+  SET_SUCCESS_MESSAGE,
+  SET_UPDATE_INTERVAL,
 } from "@/store/modules/ui/constants";
 import { RootState } from "@/store/RootState";
 import { MESSAGE_INTERVAL } from "@/api/websocket.service";

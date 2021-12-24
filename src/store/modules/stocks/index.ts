@@ -9,7 +9,10 @@ import {
   UNSUBSCRIBE_STOCK,
 } from "@/store/modules/stocks/constants";
 import { RootState } from "@/store/RootState";
-import { SET_ERROR_MESSAGE, SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
+import {
+  SET_ERROR_MESSAGE,
+  SET_SUCCESS_MESSAGE,
+} from "@/store/modules/ui/constants";
 
 export interface StockModule {
   stocks: Stock[];

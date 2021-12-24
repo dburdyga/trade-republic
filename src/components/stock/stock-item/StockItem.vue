@@ -68,7 +68,6 @@ export default defineComponent({
     margin-bottom: $building-unit;
   }
 
-
   &-container {
     display: flex;
     align-items: center;
@@ -76,6 +75,11 @@ export default defineComponent({
     border-radius: $border-radius;
     padding: $building-unit $building-unit_x1_5;
     width: 100%;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      align-items: start;
+    }
   }
 
   &-item {

@@ -4,7 +4,7 @@
       {{ label }}
     </label>
     <select :id="id" class="control" v-model="value">
-      <option value="" v-if="placeholder">{{placeholder}}</option>
+      <option value="" v-if="placeholder">{{ placeholder }}</option>
       <option v-for="item in items" :value="item.value" :key="item.value">
         {{ item.label }}
       </option>
@@ -50,9 +50,9 @@ export default defineComponent({
       },
       set(newValue: string) {
         this.$emit("update:modelValue", newValue);
-      }
-    }
-  }
+      },
+    },
+  },
 });
 </script>
 

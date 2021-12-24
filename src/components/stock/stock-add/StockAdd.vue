@@ -1,6 +1,12 @@
 <template>
   <form class="stock-add">
-    <Select id="select_isin" label="Select ISIN" placeholder="Select ISIN" :items="selectItems" v-model:modelValue="isin" />
+    <Select
+      id="select_isin"
+      label="Select ISIN"
+      placeholder="Select ISIN"
+      :items="selectItems"
+      v-model:modelValue="isin"
+    />
     <div class="stock-add-input">
       <Input
         id="isin"
@@ -47,7 +53,10 @@ export default defineComponent({
       return store.getters[GET_STOCKS];
     },
     selectItems(): SelectItem[] {
-      return [{ value: 'DE000BASF111', label: 'DE000BASF111'}, { value: 'BMG9156K1018', label: 'BMG9156K1018'}]
+      return [
+        { value: "DE000BASF111", label: "DE000BASF111" },
+        { value: "BMG9156K1018", label: "BMG9156K1018" },
+      ];
     },
     stockWasAlreadyAdded(): boolean {
       return (
@@ -57,7 +66,7 @@ export default defineComponent({
     },
     buttonDisabled(): boolean {
       return this.stockWasAlreadyAdded || !this.isISINValid(this.isin);
-    }
+    },
   },
   methods: {
     subscribeStock() {
@@ -68,16 +77,14 @@ export default defineComponent({
       }
     },
     isISINValid(isin: string): boolean {
-      return (
-        isin.length === MAX_ISIN_LENGTH && validISINRegexp.test(isin)
-      );
-    }
+      return isin.length === MAX_ISIN_LENGTH && validISINRegexp.test(isin);
+    },
   },
   watch: {
     isin(newValue) {
       this.isin = newValue.toUpperCase();
 
-      if(newValue.length === 0) {
+      if (newValue.length === 0) {
         this.isInvalid = false;
         return;
       }
@@ -93,8 +100,8 @@ export default defineComponent({
   flex-direction: column;
   width: 60%;
 
-  &-button {
-    max-width: 200px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
   }
 
   &-input {

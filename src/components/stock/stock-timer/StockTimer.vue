@@ -1,8 +1,6 @@
 <template>
   <div class="stock-timer">
-    <p class="is-secondary-color">
-      Next price update in {{timer}} seconds
-    </p>
+    <p class="is-secondary-color">Next price update in {{ timer }} seconds</p>
   </div>
 </template>
 
@@ -14,12 +12,10 @@ import store from "@/store";
 export default defineComponent({
   computed: {
     timer(): number {
-      return  store.getters[GET_UPDATE_INTERVAL];
-    }
-   }
-})
+      return store.getters[GET_UPDATE_INTERVAL];
+    },
+  },
+});
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

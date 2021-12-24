@@ -34,6 +34,11 @@ export default defineComponent({
     display: flex;
     margin-top: $building-unit_x4;
     height: 100vh;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
   }
 
   &-section {
@@ -47,6 +52,10 @@ export default defineComponent({
 
   &-form {
     border-left: 1px dashed $pale-light;
+
+    @media screen and (max-width: 600px) {
+      border-left: none;
+    }
   }
 }
 </style>
