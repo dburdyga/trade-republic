@@ -1,12 +1,16 @@
-import { shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import Input from "../Input.vue";
 
 describe("Input.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(Input, {
-      props: { msg },
-    });
-    expect(wrapper.text()).toMatch(msg);
-  });
+  it('displays id, label and placeholder', () => {
+    const wrapper = mount(Input, {
+      props: {
+        id: "input-id",
+        placeholder: "Input data",
+        label: "Input text"
+      }
+    })
+
+    expect(wrapper.text()).toContain("Input text")
+  })
 });

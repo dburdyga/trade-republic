@@ -2,9 +2,16 @@ import { mount } from "@vue/test-utils";
 import Select from "../Select.vue";
 
 describe("Select.vue", () => {
-  const wrapper = mount(Select);
+  it('displays id, label and placeholder', () => {
+    const wrapper = mount(Select, {
+      props: {
+        id: "select-id",
+        placeholder: "Select data",
+        label: "Select text",
+        // items:
+      }
+    })
 
-  test("does a wrapper exist", () => {
-    expect(wrapper.exists()).toBe(true);
-  });
+    expect(wrapper.text()).toContain("Select text")
+  })
 });
