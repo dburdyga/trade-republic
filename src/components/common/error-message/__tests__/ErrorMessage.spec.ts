@@ -2,7 +2,7 @@ import { mount } from "@vue/test-utils";
 import ErrorMessage from "../ErrorMessage.vue";
 
 describe("ErrorMessage.vue", () => {
-  test("layout default slot", () => {
+  it("should layout default slot", () => {
     const wrapper = mount(ErrorMessage, {
       slots: {
         default: "Error text message"
