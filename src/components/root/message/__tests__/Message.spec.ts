@@ -1,10 +1,10 @@
 import { shallowMount } from "@vue/test-utils";
-import StockTimer from "@/StockTimer.vue";
+import Message from "../Message.vue";
 
-describe("StockTimer.vue", () => {
+describe("Message.vue", () => {
   it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(StockTimer, {
+    const msg = "Stock list is empty. Please add stock.";
+    const wrapper = shallowMount(Message, {
       props: { msg },
     });
     expect(wrapper.text()).toMatch(msg);

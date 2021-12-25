@@ -1,10 +1,10 @@
 import { shallowMount } from "@vue/test-utils";
-import ErrorMessage from "@/ErrorMessage.vue";
+import Input from "../Input.vue";
 
-describe("ErrorMessage.vue", () => {
+describe("Input.vue", () => {
   it("renders props.msg when passed", () => {
     const msg = "new message";
-    const wrapper = shallowMount(ErrorMessage, {
+    const wrapper = shallowMount(Input, {
       props: { msg },
     });
     expect(wrapper.text()).toMatch(msg);
