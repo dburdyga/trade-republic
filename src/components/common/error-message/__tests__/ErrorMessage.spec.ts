@@ -2,9 +2,13 @@ import { mount } from "@vue/test-utils";
 import ErrorMessage from "../ErrorMessage.vue";
 
 describe("ErrorMessage.vue", () => {
-  const wrapper = mount(ErrorMessage);
+  test("layout default slot", () => {
+    const wrapper = mount(ErrorMessage, {
+      slots: {
+        default: "Error text message"
+      }
+    })
 
-  test("does a wrapper exist", () => {
-    expect(wrapper.exists()).toBe(true);
-  });
+    expect(wrapper.html()).toContain("Error text message")
+  })
 });
