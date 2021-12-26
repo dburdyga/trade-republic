@@ -76,7 +76,7 @@ export default defineComponent({
     padding: $building-unit $building-unit_x1_5;
     width: 100%;
 
-    @media screen and (max-width: 600px) {
+    @media ($tablet) {
       flex-direction: column;
       align-items: start;
     }
@@ -100,7 +100,7 @@ export default defineComponent({
     background: transparent;
     cursor: pointer;
 
-    @media screen and (max-width: 600px) {
+    @media ($tablet) {
       margin-left: 0;
     }
   }

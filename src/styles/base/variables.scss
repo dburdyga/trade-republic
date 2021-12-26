@@ -34,3 +34,11 @@ $font-medium: 600;
 $font-bold: 700;
 
 $font_path: '/assets/';
+
+
+// media queries
+$mobile: 'max-width: 767px';
+$tablet: 'max-width: 1024px';
+$desktop: 'max-width: 1366px';
+$wide-desktop: 'max-width: 1499px';
+$large-desktop: 'max-width: 1799px';

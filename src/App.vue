@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <Message />
   </div>
   <router-view />
@@ -10,8 +10,6 @@ import { defineComponent } from "vue";
 
 // Helpers
 import { init as initWebsocketConnection } from "@/api/websocket.service";
-
-// Components
 import Message from "@/components/root/message/Message.vue";
 
 export default defineComponent({

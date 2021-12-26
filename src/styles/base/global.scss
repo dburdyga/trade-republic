@@ -10,6 +10,10 @@ html {
 body {
   margin: $building-unit_x4;
   font-family: $font-family, sans-serif;
+
+  @media ($mobile) {
+    margin: $building-unit-x2;
+  }
 }
 
 

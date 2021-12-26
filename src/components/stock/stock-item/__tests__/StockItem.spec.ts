@@ -5,15 +5,11 @@ import SvgIcon from "@/components/common/svg-icon/SvgIcon.vue";
 import { generateStocks, mockStocksState } from "@/tests/mocks/mocks";
 import { convertNumberToCurrency } from "@/lib/formatters/number.formatter";
 import store from "@/store";
+import { UNSUBSCRIBE_STOCK } from "@/store/modules/stocks/constants";
 
 describe("StockItem.vue", () => {
   let wrapper: any;
   const stock = generateStocks(1)[0];
-  const $store = {
-    state: mockStocksState(),
-    commit: jest.fn(),
-    dispatch: jest.fn(),
-  }
 
   beforeEach(() => {
     wrapper = mount(StockItem, {
@@ -25,9 +21,6 @@ describe("StockItem.vue", () => {
           SvgIcon,
           Button,
         },
-        mocks: {
-          $store,
-        }
       }
     });
   })
@@ -42,10 +35,11 @@ describe("StockItem.vue", () => {
   });
 
   it("should call delete when delete clicked", async () => {
+    const dispatchMock = jest.spyOn(store, 'dispatch').mockImplementation(() => Promise.resolve());
     const button = wrapper.find('Button');
     await button.trigger('click');
 
     expect(wrapper.emitted()).toHaveProperty('click');
-    expect($store.dispatch).toHaveBeenCalled();
+    expect(dispatchMock).toHaveBeenCalledWith(UNSUBSCRIBE_STOCK, stock.isin);
   });
 });

@@ -2,6 +2,7 @@
   <form class="stock-add">
     <Select
       id="select_isin"
+      class="stock-add-select"
       label="Select ISIN"
       placeholder="Select ISIN"
       :items="selectItems"
@@ -100,8 +101,12 @@ export default defineComponent({
   flex-direction: column;
   width: 60%;
 
-  @media screen and (max-width: 600px) {
+  @media ($mobile) {
     width: 100%;
+  }
+
+  &-select {
+    margin-bottom: $building-unit_x2;
   }
 
   &-input {

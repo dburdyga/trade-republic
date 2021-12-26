@@ -60,6 +60,5 @@ export default defineComponent({
 .stock-select {
   display: flex;
   flex-direction: column;
-  margin-bottom: $building-unit_x2;
 }
 </style>

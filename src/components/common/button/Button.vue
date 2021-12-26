@@ -50,5 +50,9 @@ export default defineComponent({
       background-color: $green-light;
     }
   }
+
+  &.is-small {
+    padding: 3px $building-unit_0_5;
+  }
 }
 </style>
