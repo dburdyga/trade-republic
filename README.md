@@ -65,7 +65,7 @@ We need to keep track and compare store state and messages comming from websocke
 If we implement caching there are challenges for keeping state in store and in local storage in syqn.
 There are npm packages for this and also we can implement custom layer with functionality that kepp states in synq;
 
-On the other hand having websockets working in sync with store helps us to reactively update all components with live data.  
+On the other hand having websockets working in sync with store helps us reactively update all components with live data.  
 ```
 
 4.What happens if a user adds an instrument multiple times to their list?
@@ -73,7 +73,7 @@ On the other hand having websockets working in sync with store helps us to react
 There is check in store for upcomming messages. We check if instrument is already saved in state.
 If it is, we just update it, else we add it.
 
-Also there is a validation in stock add form. If instrument was already subscribed we canno't add it again.
+Also there is a validation in stock add form. If instrument has been already subscribed we canno't add it again.
 ```
 
 5.Possible challenges and mitigations.
@@ -85,6 +85,6 @@ It was less performant to check validation on every type but it is more obvious 
 In the future we could add debounce options.
 
 There was also a challenge with store updates.
-If we update store on every websocket message it would force to rerender subscribed components.
+If we update store on every websocket message it would force to rerender subscribed components too often.
 So we have to throttle websocket messages in order to improve performance.
 ```
