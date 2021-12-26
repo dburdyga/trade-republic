@@ -54,10 +54,13 @@ const stocks: Module<StockModule, RootState> = {
       state.stocks = stocks;
     },
     [REMOVE_STOCK](state, isin: string) {
-      const index = state.stocks.findIndex((stock) => stock.isin === isin);
+      const stocks = [...state.stocks];
+      const index = stocks.findIndex((stock) => stock.isin === isin);
       if (index > -1) {
-        state.stocks.splice(index, 1);
+        stocks.splice(index, 1);
       }
+
+      state.stocks = stocks;
     },
   },
 };
