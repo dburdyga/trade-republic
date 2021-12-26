@@ -23,7 +23,7 @@ describe("StockItem.vue", () => {
         },
       }
     });
-  })
+  });
 
   it("should render stock properties", () => {
     let values = wrapper.findAll('.stock-item-value');

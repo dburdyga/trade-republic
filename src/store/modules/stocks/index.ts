@@ -10,6 +10,7 @@ import {
 } from "@/store/modules/stocks/constants";
 import { RootState } from "@/store/RootState";
 import { SET_SUCCESS_MESSAGE } from "@/store/modules/ui/constants";
+import store from "@/store";
 
 export interface StockModule {
   stocks: Stock[];
@@ -25,6 +26,10 @@ const stocks: Module<StockModule, RootState> = {
     [SUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ subscribe: isin });
       commit(SET_STOCKS, { isin, price: 0, ask: 0, bid: 0 });
+      store.commit(
+        SET_SUCCESS_MESSAGE,
+        "Message was added. Stock can appear in couple of seconds"
+      );
     },
     [UNSUBSCRIBE_STOCK]({ commit }, isin: string) {
       sendMessage({ unsubscribe: isin });
