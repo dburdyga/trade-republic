@@ -5,7 +5,7 @@ export function convertNumberToCurrency(
     currency: "EUR",
   }
 ): string {
-  if(Number.isNaN(num)) {
+  if (Number.isNaN(num)) {
     num = 0;
   }
 

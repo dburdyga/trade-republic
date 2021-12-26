@@ -3,12 +3,15 @@
     <h1 class="home-header">Streaming market data</h1>
     <div class="home-content">
       <div class="home-section is-big">
-        <Button class="is-active home-button-responsive" @click="isFormOpen = true">
+        <Button
+          class="is-active home-button-responsive"
+          @click="isFormOpen = true"
+        >
           Subscribe new stock
         </Button>
         <StockList />
       </div>
-      <div class="home-section home-form" :class="{ 'is-opened': isFormOpen}">
+      <div class="home-section home-form" :class="{ 'is-opened': isFormOpen }">
         <div class="home-form-close">
           <Button class="is-small" @click="isFormOpen = false">
             <SvgIcon name="close" />
@@ -32,8 +35,8 @@ export default defineComponent({
   data() {
     return {
       isFormOpen: false,
-    }
-  }
+    };
+  },
 });
 </script>
 <style lang="scss">

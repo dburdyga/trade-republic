@@ -6,16 +6,16 @@ function generateStock(number: number): Stock {
     isin: `${new Date().getTime()}-${number}`,
     bid: 45.4546,
     ask: 56.45445454,
-    price: 234.34355545
+    price: 234.34355545,
   };
 }
 
 export function generateStocks(quantity: number): Stock[] {
-  if(quantity < 0 || Number.isNaN(quantity)) return [];
+  if (quantity < 0 || Number.isNaN(quantity)) return [];
   quantity = Math.trunc(quantity);
   const stocks = [];
 
-  for(let i = 1; i <= quantity; i++) {
+  for (let i = 1; i <= quantity; i++) {
     stocks.push(generateStock(i));
   }
 
@@ -25,5 +25,5 @@ export function generateStocks(quantity: number): Stock[] {
 export function mockStocksState(): StockModule {
   return {
     stocks: generateStocks(3),
-  }
+  };
 }

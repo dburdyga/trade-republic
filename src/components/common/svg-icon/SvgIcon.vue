@@ -5,10 +5,9 @@
   </svg>
 </template>
 
-<script>
-export default {
-  name: "svg-icon",
-
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
   props: {
     name: {
       type: String,
@@ -22,7 +21,7 @@ export default {
   },
 
   computed: {
-    iconPath() {
+    iconPath(): string {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       let icon = require(`@/assets/icons/${this.name}.svg`);
       if (Object.prototype.hasOwnProperty.call(icon, "default")) {
@@ -31,13 +30,11 @@ export default {
 
       return icon.url;
     },
-
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    className() {
+    className(): string {
       return "svg-icon svg-icon--" + this.name;
     },
   },
-};
+});
 </script>
 
 <style>

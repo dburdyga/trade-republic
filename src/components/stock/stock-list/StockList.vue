@@ -4,14 +4,23 @@
       <StockTimer />
       <div class="stock-list-sort" v-if="showSorting">
         <label class="is-caption">Sort by:</label>
-        <Select id="select-sort" placeholder="Select sorting key" :items="sortKeys" v-model="sortingKey" />
+        <Select
+          id="select-sort"
+          placeholder="Select sorting key"
+          :items="sortKeys"
+          v-model="sortingKey"
+        />
         <Button class="is-small" @click="isAsc = !isAsc">
-          <SvgIcon name="arrow" :class="{ 'is-reversed' : !isAsc}"/>
+          <SvgIcon name="arrow" :class="{ 'is-reversed': !isAsc }" />
         </Button>
       </div>
     </div>
     <template v-if="sortedArray.length">
-      <StockItem :key="stock.isin" v-for="stock in sortedArray" :stock="stock" />
+      <StockItem
+        :key="stock.isin"
+        v-for="stock in sortedArray"
+        :stock="stock"
+      />
     </template>
     <template v-else> Stock list is empty. Please add stock. </template>
   </div>
@@ -38,21 +47,23 @@ export default defineComponent({
     return {
       sortingKey: "isin" as Keys,
       isAsc: true,
-    }
+    };
   },
   computed: {
     sortKeys(): SelectItem[] {
       const keys = this.stocks.length > 0 ? Object.keys(this.stocks[0]) : [];
-      return keys.map((key) => ({label: key, value: key}));
+      return keys.map((key) => ({ label: key, value: key }));
     },
     stocks(): Stock[] {
-      return <Stock[]>store.getters[GET_STOCKS];
+      return store.getters[GET_STOCKS];
     },
     sortedArray(): Stock[] {
-      return this.stocks.sort((a, b) => stockComparator(a, b, this.sortingKey, this.isAsc));
+      return [...this.stocks].sort((a, b) =>
+        stockComparator(a, b, this.sortingKey, this.isAsc)
+      );
     },
     showSorting(): boolean {
-      return  this.stocks.length > 1;
+      return this.stocks.length > 1;
     },
   },
 });
@@ -64,7 +75,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     @media ($mobile) {
       flex-direction: column;
       justify-content: flex-start;

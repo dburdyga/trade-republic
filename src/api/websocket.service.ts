@@ -3,7 +3,7 @@ import { Message } from "@/lib/types/api/Message";
 import { SET_STOCKS } from "@/store/modules/stocks/constants";
 import {
   SET_ERROR_MESSAGE,
-  SET_UPDATE_INTERVAL
+  SET_UPDATE_INTERVAL,
 } from "@/store/modules/ui/constants";
 
 let MAX_CONNECT_RETRY = 3;
@@ -17,20 +17,21 @@ let websocket: WebSocket | undefined = undefined;
 function init(url: string): void {
   websocket = new WebSocket(url);
 
-  websocket.onopen = () => {};
-
   websocket.onclose = (event) => {
     if (event.reason === ABNORMAL_REASON_CODE && MAX_CONNECT_RETRY >= 0) {
       init(url);
       MAX_CONNECT_RETRY--;
     } else {
-      store.commit(SET_ERROR_MESSAGE, `Connection was closed. Reason: ${event.reason}`)
+      store.commit(
+        SET_ERROR_MESSAGE,
+        `Connection was closed. Reason: ${event.reason}`
+      );
     }
   };
 
   websocket.onerror = (event) => {
     websocket?.close();
-    store.commit(SET_ERROR_MESSAGE, `Connection was closed. Reason: ${event}`)
+    store.commit(SET_ERROR_MESSAGE, `Connection was closed. Reason: ${event}`);
   };
 
   /**

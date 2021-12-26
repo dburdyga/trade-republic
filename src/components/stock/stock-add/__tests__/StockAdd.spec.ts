@@ -1,5 +1,6 @@
+/* ts-ignore */
 import { mount } from "@vue/test-utils";
-import ErrorMessage from '@/components/common/error-message/ErrorMessage.vue';
+import ErrorMessage from "@/components/common/error-message/ErrorMessage.vue";
 import StockAdd from "../StockAdd.vue";
 import SvgIcon from "@/components/common/svg-icon/SvgIcon.vue";
 import Button from "@/components/common/button/Button.vue";
@@ -23,17 +24,16 @@ describe("StockAdd.vue", () => {
           ErrorMessage,
           Select,
         },
-      }
+      },
     });
 
-    input = wrapper.find('input');
-  })
-
+    input = wrapper.find("input");
+  });
 
   it("should provide select with default options and input option", () => {
-    const select = wrapper.find('Select');
-    const errorMessage = wrapper.find('.error-message')
-    const selectOption = select.findAll('option');
+    const select = wrapper.find("Select");
+    const errorMessage = wrapper.find(".error-message");
+    const selectOption = select.findAll("option");
 
     expect(select.exists()).toBe(true);
     expect(input.exists()).toBe(true);
@@ -51,7 +51,7 @@ describe("StockAdd.vue", () => {
 
     await input.trigger("input");
 
-    const errorMessages = wrapper.findAll('.error-message');
+    const errorMessages = wrapper.findAll(".error-message");
     expect(errorMessages[1].classes(".is-hidden")).toBe(false);
     expect(errorMessages[1].text()).toContain(ERROR_MESSAGE);
   });
@@ -70,7 +70,9 @@ describe("StockAdd.vue", () => {
 
   it("should not trigger event if input is valid", async () => {
     const value = "BMG9156K1018";
-    const dispatchMock = jest.spyOn(store, 'dispatch').mockImplementation(() => Promise.resolve());
+    const dispatchMock = jest
+      .spyOn(store, "dispatch")
+      .mockImplementation(() => Promise.resolve());
     input.element.value = value;
 
     await input.trigger("input");
