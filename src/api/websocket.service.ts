@@ -31,7 +31,7 @@ function init(url: string): void {
 
   websocket.onerror = (event) => {
     websocket?.close();
-    store.commit(SET_ERROR_MESSAGE, `Connection was closed. Reason: ${event}`);
+    store.commit(SET_ERROR_MESSAGE, 'Connection was closed.');
   };
 
   /**
@@ -49,7 +49,7 @@ function init(url: string): void {
       try {
         message = JSON.parse(e.data);
       } catch (e) {
-        console.error(e);
+        store.commit(SET_ERROR_MESSAGE, 'Message cannot be parsed.');
       }
       COUNTER_MESSAGES = MESSAGE_INTERVAL;
       store.commit(SET_STOCKS, message);
