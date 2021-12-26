@@ -84,7 +84,12 @@ export default defineComponent({
   }
 
   &-button-responsive {
+    display: none;
     margin-bottom: $building-unit_x2;
+
+    @media ($tablet) {
+      display: block;
+    }
   }
 
   &-form {
