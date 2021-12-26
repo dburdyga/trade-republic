@@ -26,7 +26,7 @@
     <Button
       :disabled="buttonDisabled"
       class="is-active stock-add-button"
-      @click.stop="subscribeStock"
+      @click="subscribeStock"
       >Subscribe</Button
     >
   </form>
@@ -85,6 +85,9 @@ export default defineComponent({
     isin(newValue) {
       this.isin = newValue.toUpperCase();
 
+      /**
+       * Remove errors for initial state
+       */
       if (newValue.length === 0) {
         this.isInvalid = false;
         return;

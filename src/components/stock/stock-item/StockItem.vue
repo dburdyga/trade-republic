@@ -30,8 +30,8 @@
 import { defineComponent } from "vue";
 import { Stock } from "@/lib/types/models/Stock";
 import { convertNumberToCurrency } from "@/lib/formatters/number.formatter";
-import store from "@/store";
 import { UNSUBSCRIBE_STOCK } from "@/store/modules/stocks/constants";
+import store from "@/store";
 
 export default defineComponent({
   props: {
