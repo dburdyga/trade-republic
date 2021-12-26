@@ -7,8 +7,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-
-// Helpers
 import { init as initWebsocketConnection } from "@/api/websocket.service";
 import Message from "@/components/root/message/Message.vue";
 

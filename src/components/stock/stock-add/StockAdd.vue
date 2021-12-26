@@ -1,5 +1,5 @@
 <template>
-  <form class="stock-add">
+  <form class="stock-add" @submit.prevent="subscribeStock">
     <Select
       id="select_isin"
       class="stock-add-select"
@@ -26,7 +26,7 @@
     <Button
       :disabled="buttonDisabled"
       class="is-active stock-add-button"
-      @click="subscribeStock"
+      @click.stop="subscribeStock"
       >Subscribe</Button
     >
   </form>
